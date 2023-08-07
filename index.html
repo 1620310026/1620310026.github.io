@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>あそんでまなべる　日本地図クイズ　攻略サイト</title>
+  <style>
+    /* Reset default browser styles */
+    body,
+    h1,
+    p,
+    ol,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 20px;
+      color: #333;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    strong {
+      display: block;
+      text-align: center;
+      font-size: 24px;
+      margin: 30px 0;
+      color: #555;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    ol {
+      margin-left: 20px;
+      color: #888;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #003366;
+    }
+
+    h2 {
+      margin: 30px 0 10px;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      // ページ読み込み時に実行する処理
+      smoothScroll();
+    });
+
+    function smoothScroll() {
+      const links = document.querySelectorAll('a[href^="#"]');
+      
+      links.forEach(link => {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>あそんでまなべる　日本地図クイズ　攻略サイト</h1>
+  <p>「あそんでまなべる　日本地図クイズ」を正攻法で3秒台（都道府県　10問）を記録した主が解説します。</p>
+  <p>なお、都道府県　10問についての解説をメインとして行います。</p>
+
+  <p><strong>ポイント</strong></p>
+  <ol>
+    <li><a href="#hd1">一問目は連打で運ゲー</a></li>
+    <li><a href="#hd2">あとは集中力と反射神経</a></li>
+    <li><a href="#hd3">運は関係あるのか</a></li>
+    <li><a href="#hd4">なぜ世界記録は0秒台なのか</a></li>
+
+  </ol>
+
+  <h2 id="hd1">一問目は連打で運ゲー</h2>
+  <p>一問目に関しては、反応が遅れるので、4つの選択肢の中のどれかを連打することをお勧めします。</p>
+  <p>スタートダッシュを図りましょう。</p>
+
+  <h2 id="hd2">あとは集中力と反射神経</h2>
+  <p>あとは集中力と反射神経だけです。</p>
+  <p>都道府県の位置と名前は経験で覚えましょう。</p>
+
+  <h2 id="hd3">運は関係あるのか</h2>
+  <p>次の問題に移動する時、近ければ問題となる都道府県すぐわかるため反応も早くなりますが、遠い場合は四択が出る直前に問題の都道府県がようやく分かるので、解答が遅れてしまいます。</p>
+  <p>そのため、前の問題に近い都道府県のほうが早く解けるという運要素があります。</p>
+  <p>実例として、私の最高記録は関東の都道府県が5つほど出たときでした。</p>
+  
+  <h2 id="hd4">なぜ世界記録は0秒台なのか</h2>
+  <p>ランキングを見てみると、全期間の記録には0.6秒など、0秒台の人もちらほらいます。</p>
+  <p>この記録は、普通にやってるだけではほぼ確実に出せません。</p>
+  <p>では、彼らはどうやってその記録を出しているのでしょうか？</p>
+  <p>恐らく、彼らはとてつもなく動作の遅い機種を使っていると考えられます。</p>
+  <p>日本地図クイズでは、処理が重くなるとタイマーのカウントも遅くなるという仕様になっています。</p>
+  <p>そのため、重い機種を使うと問題を見てから解答するまでの時間をほぼ0にすることができます。</p>
+  <p>どうしても世界記録を取りたいという人は、重い機種か重い処理を行っていてフリーズ寸前の機種を使いましょう。</p>
+</body>
+</html>  
