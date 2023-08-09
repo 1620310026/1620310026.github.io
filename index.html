@@ -6,74 +6,77 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>あそんでまなべる　日本地図クイズ　攻略サイト</title>
   <style>
-    /* Reset default browser styles */
+  /* Reset default browser styles */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  strong {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    margin: 30px 0;
+    color: #555;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+  }
+
+  ol {
+    margin-left: 30px;
+    font-size: 18px;
+    color: #888;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    font-size: 20px;
+    margin: 0 10px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: #003366;
+  }
+
+  h2 {
+    margin: 30px 0 15px;
+    font-size: 22px;
+    color: #333;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* Add some padding on the sides for mobile */
     body {
-      font-family: Arial, sans-serif;
-      font-size: 0px;
-      line-height: 1.2;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0px;
-      background-color: #f2f2f2;
+      padding: 0 15px;
     }
-
-    h1 {
-      text-align: center;
-      font-size: 48px;
-      margin-top: 30px;
-      color: #333;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    strong {
-      display: block;
-      text-align: center;
-      font-size: 32px;
-      margin: 40px 0;
-      color: #555;
-    }
-
-    p {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #666;
-    }
-
-    ol {
-      margin-left: 30px;
-      font-size: 16px;
-      color: #888;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    a {
-      display: block;
-      color: #0066cc;
-      text-decoration: none;
-      transition: color 0.3s ease-in-out;
-      margin-bottom: 24px;
-      min-width: 48px;
-      min-height: 48px;
-      font-size: 24px;
-
-    }
-
-    a:hover {
-      text-decoration: underline;
-      color: #003366;
-    }
-
-    h2 {
-      margin: 40px 0 20px;
-      font-size: 24px;
-      color: #333;
-    }
-
-    
-  </style>
+  }
+</style>
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
       // ページ読み込み時に実行する処理
