@@ -1,0 +1,218 @@
+/* css.css */
+body {
+  font-family: Arial, sans-serif;
+  text-align: left;
+  margin: 20px;
+  padding-top: 50px; 
+}
+
+h3{
+font-size: 20px;
+margin-bottom: 5px;
+}
+
+h2{
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 18px;
+  margin: 0px 0px;
+}
+
+a{
+  text-decoration: none;
+}
+
+select {
+  font-size:16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+
+}
+
+.generate-button {
+  font-size: 16px;
+  padding: 8px 15px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.generate-button:hover {
+  background-color: #2980b9;
+}
+
+#output {
+  font-size: 20px;
+}
+
+.custom-radio {
+  display: inline-block
+}
+
+.custom-radio input[type="radio"] {
+  display: none; 
+}
+
+.custom-radio .radio-text {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #727272;
+  font-weight: 520;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-text {
+  background-color: #3498db;
+  color: #fff;
+}
+
+#form{
+  padding: 5px 10px;
+  border-radius: 10px;    
+  text-align: left;
+  border: 5px solid #95ccff;
+
+}
+
+#koumoku{
+  font-size: 20px;
+  font-weight: 850;
+  color: #3480db;
+}
+
+.custom-toggle {
+display: inline-block;
+}
+
+.custom-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.custom-toggle .toggle-text {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #727272;
+  font-weight: 520;
+}
+
+.custom-toggle input[type="checkbox"]:checked + .toggle-text {
+  background-color: #3498db;
+  color: #fff;
+}
+
+ul{
+margin-block-end: 0px;
+margin-block-start: 0px;
+}
+
+#form{
+  padding: 5px 10px;
+  border-radius: 10px;    
+  text-align: left;
+  border: 5px solid #95ccff;
+
+}
+
+.mini p {
+  font-size: 16px;
+  color: #8a8a8a;
+  text-align: center;
+}
+
+#notmargintop{
+  margin-top: 0px;
+}
+
+nav {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background-color: #3480db;
+color: #fff;
+height: 50px; 
+display: inline-block;
+justify-content: flex-start; /* テキストを左揃えにする */
+margin: 0px;
+font-size: 0px;
+overflow-x: auto;
+white-space: nowrap;
+vertical-align: text-top;
+}
+
+nav ul {
+list-style: none;
+margin: 0px;
+height: 50px; 
+letter-spacing:normal;
+vertical-align: text-top;
+overflow: hidden;
+display: inline-block;
+overflow-x:scroll
+}
+
+nav ul li {
+display: inline-block;
+}
+
+nav ul a {
+display: inline-block;
+font-weight: bold;
+padding-left: 10px;
+padding-right: 10px;
+vertical-align: text-top;
+}
+
+nav ul a span {
+  font-size: 15px;
+  color: #fff;
+  line-height:50px;
+}
+
+nav ul a img {
+  height: 50px; 
+  line-height:50px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-block-end: 0px;
+  margin-block-start: 0px;
+  font-size: 15px;
+}
+
+
+nav ul li:hover {
+background-color: #1856a1;
+}
+
+nav ul a#title {
+  font-size: 18px;
+  font-weight: 1000;
+}
+
+.image{
+  text-align: center;
+  max-width:500px ;
+  margin: 0 auto;
+}
+
+.image img {
+  max-height: 50vh;
+  max-width: 100%;
+}
+
+.hh1{
+  font-size: 30px;
+  font-weight: bold;
+}

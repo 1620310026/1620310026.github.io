@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="css.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大阪近郊区間大回り乗車ランダムルートジェネレーター</title>
+    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="ランダムで大阪近郊区間の大回り乗車のルートを生成します。各種オプションで経路の長さなども指定できます。" />
+    <!-- Clarity tracking code for https://1620310026.github.io/omawari-random.jp/ -->
+    <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "j21lvtqopw");
+    </script>
+</head>
+<body>
+    <nav class id="navigation">
+        <ul>
+            <li><a id="title" href="./"><img src="logo.png" height="50px" alt="大回り乗車ランダムルートジェネレーターのロゴ"></a></li>
+            <li><a href="./"><span>東京近郊区間</span></a>
+            <li><a href="osaka.html"><span>大阪近郊区間</span></a>                
+            <li><a href="help.html"><span>使い方</span></a></li>
+            <li><a href="sonota.html"><span>その他・問い合わせ</span></a></li>
+        </ul>
+    </nav>    
+    <h1>大阪近郊区間大回り乗車ランダムルートジェネレーター</h1>
+    <div id="form">
+        <form>
+            <p id="koumoku">ルートの形状</p>
+            <label class="custom-radio">
+                <input type="radio" name="1" value="o" checked onclick="showElement();">
+                <span class="radio-text">O型(一周)</span>
+            </label>
+            <label class="custom-radio">
+                <input type="radio" name="1" value="n" onclick="showElement();">
+                <span class="radio-text">始点・終点指定</span>
+            </label>
+            <p id="koumoku">長さ・経由する乗り換え駅の数</p>
+            <label class="custom-radio">
+                <input type="radio" name="ekisuu" value="0,7" >
+                <span class="radio-text">お手軽7駅以下</span>
+            </label>
+            <label class="custom-radio">
+                <input type="radio" name="ekisuu" value="8,13" >
+                <span class="radio-text">軽めに8~13駅</span>
+            </label>
+            <label class="custom-radio">
+                <input type="radio" name="ekisuu" value="14,19" >
+                <span class="radio-text"> 乗り鉄14~19駅</span>
+            </label>
+            <label class="custom-radio">
+                <input type="radio" name="ekisuu" value="20,100" >
+                <span class="radio-text"> 朝から晩まで20駅以上</span>
+            </label>
+            <label class="custom-radio">
+                <input type="radio" name="ekisuu" value="0,100" checked>
+                <span class="radio-text">駅数指定なし</span>
+            </label>
+            <p id="koumoku">経由不可にする駅</p>
+            <label class="custom-toggle">
+                <input type="checkbox" name="keiyufuka" value="谷川" >
+                <span class="toggle-text">谷川</span>
+            </label>
+            <label class="custom-toggle">
+                <input type="checkbox" name="keiyufuka" value="加古川" >
+                <span class="toggle-text">加古川</span>
+            </label>
+            <label class="custom-toggle">
+                <input type="checkbox" name="keiyufuka" value="和歌山" >
+                <span class="toggle-text">和歌山</span>
+            </label>
+            <label class="custom-toggle">
+                <input type="checkbox" name="keiyufuka" value="桜井" >
+                <span class="toggle-text">桜井</span>
+            </label>
+            <label class="custom-toggle">
+                <input type="checkbox" name="keiyufuka" value="近江塩津" >
+                <span class="toggle-text">近江塩津</span>
+            </label>
+        </form>
+    </div>    
+    <p id="sentaku">大回り乗車の始点・終点となる駅のある区間もしくは駅（乗換駅+αのみ）を選択</p>
+    <select id="dropdown">
+        <option value="近江塩津 - 堅田">近江塩津 - 堅田</option>
+        <option value="近江塩津 - 米原">近江塩津 - 米原</option>
+        <option value="堅田 - 山科">堅田 - 山科</option>
+        <option value="米原 - 草津">米原 - 草津</option>
+        <option value="山科 - 草津">山科 - 草津</option>
+        <option value="山科 - 京都">山科 - 京都</option>
+        <option value="草津 - 柘植">草津 - 柘植</option>
+        <option value="京都 - 木津">京都 - 木津</option>
+        <option value="京都 - 新大阪">京都 - 新大阪</option>
+        <option value="柘植 - 木津">柘植 - 木津</option>
+        <option value="木津 - 奈良">木津 - 奈良</option>
+        <option value="木津 - 放出">木津 - 放出</option>
+        <option value="新大阪 - 大阪">新大阪 - 大阪</option>
+        <option value="新大阪 - 鴫野">新大阪 - 鴫野</option>
+        <option value="奈良 - 王子">奈良 - 王子</option>
+        <option value="奈良 - 桜井">奈良 - 桜井</option>
+        <option value="放出 - 鴫野">放出 - 鴫野</option>
+        <option value="放出 - 久宝寺">放出 - 久宝寺</option>
+        <option value="大阪 - 尼崎">大阪 - 尼崎</option>
+        <option value="大阪 - 京橋">大阪 - 京橋</option>
+        <option value="大阪 - 西九条">大阪 - 西九条</option>
+        <option value="鴫野 - 京橋">鴫野 - 京橋</option>
+        <option value="王子 - 久宝寺">王子 - 久宝寺</option>
+        <option value="王子 - 高田">王子 - 高田</option>
+        <option value="桜井 - 高田">桜井 - 高田</option>
+        <option value="久宝寺 - 天王寺">久宝寺 - 天王寺</option>
+        <option value="尼崎 - 京橋">尼崎 - 京橋</option>
+        <option value="尼崎 - 三宮">尼崎 - 三宮</option>
+        <option value="尼崎 - 谷川">尼崎 - 谷川</option>
+        <option value="京橋 - 天王寺">京橋 - 天王寺</option>
+        <option value="西九条 - 天王寺">西九条 - 天王寺</option>
+        <option value="高田 - 和歌山">高田 - 和歌山</option>
+        <option value="天王寺 - 和歌山">天王寺 - 和歌山</option>
+        <option value="加古川 - 谷川">加古川 - 谷川</option>
+        <option value="加古川 - 三宮">加古川 - 三宮</option>
+    </select>
+    <div id="elementToShow" style="display: none;">
+    <p>大回り乗車の終点となる駅のある区間もしくは駅（乗換駅+αのみ）を選択</p>
+    <select id="dropdown2">
+        <option value="近江塩津 - 堅田">近江塩津 - 堅田</option>
+        <option value="近江塩津 - 米原">近江塩津 - 米原</option>
+        <option value="堅田 - 山科">堅田 - 山科</option>
+        <option value="米原 - 草津">米原 - 草津</option>
+        <option value="山科 - 草津">山科 - 草津</option>
+        <option value="山科 - 京都">山科 - 京都</option>
+        <option value="草津 - 柘植">草津 - 柘植</option>
+        <option value="京都 - 木津">京都 - 木津</option>
+        <option value="京都 - 新大阪">京都 - 新大阪</option>
+        <option value="柘植 - 木津">柘植 - 木津</option>
+        <option value="木津 - 奈良">木津 - 奈良</option>
+        <option value="木津 - 放出">木津 - 放出</option>
+        <option value="新大阪 - 大阪">新大阪 - 大阪</option>
+        <option value="新大阪 - 鴫野">新大阪 - 鴫野</option>
+        <option value="奈良 - 王子">奈良 - 王子</option>
+        <option value="奈良 - 桜井">奈良 - 桜井</option>
+        <option value="放出 - 鴫野">放出 - 鴫野</option>
+        <option value="放出 - 久宝寺">放出 - 久宝寺</option>
+        <option value="大阪 - 尼崎">大阪 - 尼崎</option>
+        <option value="大阪 - 京橋">大阪 - 京橋</option>
+        <option value="大阪 - 西九条">大阪 - 西九条</option>
+        <option value="鴫野 - 京橋">鴫野 - 京橋</option>
+        <option value="王子 - 久宝寺">王子 - 久宝寺</option>
+        <option value="王子 - 高田">王子 - 高田</option>
+        <option value="桜井 - 高田">桜井 - 高田</option>
+        <option value="久宝寺 - 天王寺">久宝寺 - 天王寺</option>
+        <option value="尼崎 - 京橋">尼崎 - 京橋</option>
+        <option value="尼崎 - 三宮">尼崎 - 三宮</option>
+        <option value="尼崎 - 谷川">尼崎 - 谷川</option>
+        <option value="京橋 - 天王寺">京橋 - 天王寺</option>
+        <option value="西九条 - 天王寺">西九条 - 天王寺</option>
+        <option value="高田 - 和歌山">高田 - 和歌山</option>
+        <option value="天王寺 - 和歌山">天王寺 - 和歌山</option>
+        <option value="加古川 - 谷川">加古川 - 谷川</option>
+        <option value="加古川 - 三宮">加古川 - 三宮</option>
+    </select>
+    </div>
+    <button class="generate-button" onclick="generateRoute()">ランダムルート生成</button>
+    <p id="output"><br><br><br><br><br></p>
+    <br>
+    <button onclick="download()" class="generate-button">生成されたルートを画像に変換してダウンロード</button>
+    <p><a href="https://www.jreast.co.jp/kippu/1103.html">大都市近郊区間の特例</a>を利用した大回り乗車のルートをランダムで生成します。</p>
+    <p>大回り乗車について知っている方のみ使用してください。わからない方はネット上で調べてください。</p>
+    <p>また、生成されたルートに関する注意事項がございますので、<a href="#caution">こちら</a>もご覧ください。</p>
+    <p>現在、<a href="https://www.jreast.co.jp/kippu/1103.html">東京近郊区間,大阪近郊区間</a>のみに対応しております。</p>
+    <p>東京近郊区間版は<a href="./">こちら</a>です。</p>
+    <p>詳しい使い方は、<a href="help.html">使い方</a>のページをご覧ください。</p>
+    <br>
+    <h2 id="caution">ルート生成に関する注意事項</h2>
+    <p>しかし規則にこの区間のことが明記されてはなく、駅員によって対応が変わる可能性などもあるため、不安な人は京浜東北線田端経由で移動する（元々のルートで田端を通らない場合）かルートを再生成するといったことで対応してください。</p>                       
+    <h3>本サイトでの折り返し乗車の特例の扱い</h3>
+    <p>本サイトで生成されたルートは、<a href="https://www.jreast.co.jp/kippu/1105.html">折り返し乗車の特例</a>などを使用しないルートになっております。</p>
+    <br>
+    <div class="mini">
+    <p>本サイトのソースコードは<a href="https://github.com/1620310026/omawari-random.jp">GitHub</a>で公開されています。</p>
+    <p>本サイトのソースコードはMITライセンスに基づいてライセンスされています。ライセンスと著作権表示を行えば、商用利用・再頒布などが可能です。詳しくは<a href="https://github.com/1620310026/omawari-random.jp/blob/main/LICENSE">こちら</a>をご覧ください。</p>
+    <p>©2023 1620310026</p>
+    </div>
+    <script src="osakajs.js"></script>
+</body>
+</html>
