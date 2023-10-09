@@ -1,3 +1,2 @@
-# japanmapquiz.jp.github.io
-Thank you ChatGPT!
-https://chat.openai.com
+# 162031026.github.io
+
