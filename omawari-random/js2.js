@@ -538,4 +538,12 @@ function wrapText(text, context, maxWidth, fontSize) {
     return lines;
 }
 
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.classList.toggle("open");
+    
+}
+
+
+
 

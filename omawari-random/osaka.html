@@ -16,16 +16,18 @@
     </script>
 </head>
 <body>
-    <nav class id="navigation">
+    <div id="menu-button" onclick="toggleMenu()">☰</div>
+    <div class id="menu">
         <ul>
-            <li><a id="title" href="./"><img src="logo.png" height="50px" alt="大回り乗車ランダムルートジェネレーターのロゴ"></a></li>
+            <li><img src="logo.png" height="50px" alt="大回り乗車ランダムルートジェネレーターのロゴ"></li>
             <li><a href="./"><span>東京近郊区間</span></a>
             <li><a href="osaka.html"><span>大阪近郊区間</span></a>                
             <li><a href="help.html"><span>使い方</span></a></li>
             <li><a href="sonota.html"><span>その他・問い合わせ</span></a></li>
         </ul>
-    </nav>    
-    <h1>大阪近郊区間大回り乗車ランダムルートジェネレーター</h1>
+    </div>     
+    <div id="content">
+        <h1>大阪近郊区間大回り乗車ランダムルートジェネレーター</h1>
     <div id="form">
         <form>
             <p id="koumoku">ルートの形状</p>
@@ -180,5 +182,6 @@
     <p>©2023 1620310026</p>
     </div>
     <script src="osakajs.js"></script>
+    </div>
 </body>
 </html>

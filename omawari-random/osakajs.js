@@ -516,3 +516,8 @@ for (const station in stationConnections) {
     option.textContent = station;
     dropdown.appendChild(option);
 }
+
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.classList.toggle("open");
+}
