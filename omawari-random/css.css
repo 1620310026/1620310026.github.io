@@ -160,6 +160,8 @@ margin-block-start: 0px;
   cursor: pointer;
   z-index: 2;
   font-size: 30px;
+  background-color: #3480db;
+  color: #fff;
 }
 
 #menu {
@@ -229,11 +231,17 @@ background-color: #1856a1;
       top: 10px;
       left: 10px; /* 画面左上に固定 */
       display: block;
+      margin: -10px;
+      font-weight: bold;
   }
 
 
   #menu a span {
     width: 100%;
+  }
+  #menu img{
+    margin-top: 50px;
+    
   }
 }
 
@@ -249,18 +257,34 @@ background-color: #1856a1;
   }
 
   #menu.open {
-    position: fixed;
+    position: sticky;
     left: -100%;
-    margin: 0;
-    width: 250px;
+    width: 0px;
     z-index: 1;
     padding: 0;
+    margin-left: -20px;
+    margin-top: -70px;
+    margin-right: 20px;
+    margin-bottom: -20px;
+    height:100vh
+  }
+
+  #menu.open li{
+    display: none;
+  }
+
+  #menu img{
+    margin-top: 50px;
+    
   }
 
 
   #menu-button {
-    display: inline;
+    margin: -10px;
+    font-weight: bold;
   }
+
+ 
 
   #menu {
     width: 250px;
