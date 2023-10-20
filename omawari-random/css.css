@@ -216,13 +216,13 @@ background-color: #1856a1;
 /* メディアクエリ: 横幅750px以下の場合 */
 @media (max-width: 630px) {
   #menu.open {
-      width: 100%;
-      left: 0; /* 画面内に表示 */
-      overflow: hidden;
+      left: -100%;
   }
 
   #menu {
-      left: -100%
+      width: 100%;
+      left: 0; /* 画面内に表示 */
+      overflow: hidden;
   }
 
   #menu-button {
