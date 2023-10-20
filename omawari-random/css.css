@@ -200,20 +200,6 @@ background-color: #1856a1;
   left: 0;
  }
 
- @media (max-width: 750px) {
-  #menu {
-      width: 100%;
-      z-index: 1;
-  }
-
-  #menu-button {
-      display: block;
-  }
-
-  #menu.open {
-      left: 0;
-  }
-}
 
 /* メディアクエリ: 横幅750px以下の場合 */
 @media (max-width: 630px) {
