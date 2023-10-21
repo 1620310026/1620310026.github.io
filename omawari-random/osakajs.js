@@ -520,4 +520,6 @@ for (const station in stationConnections) {
 function toggleMenu() {
     var menu = document.getElementById("menu");
     menu.classList.toggle("open");
+    var menubutton = document.getElementById("menu-button");
+    menubutton.classList.toggle("open");
 }

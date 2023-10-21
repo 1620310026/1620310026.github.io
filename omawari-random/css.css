@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   text-align: left;
   margin: 20px;
-  padding-top: 50px; 
+  padding-top: 20px; 
   display: flex;
 }
 
@@ -212,12 +212,14 @@ background-color: #1856a1;
       left: -100%;
   }
 
-  #menu-button {
+  #menu-button.open {
       top: 10px;
       left: 10px; /* 画面左上に固定 */
       display: block;
       margin: -10px;
       font-weight: bold;
+      background-color: #3480db;
+      color: #fff;
   }
 
 
@@ -227,6 +229,16 @@ background-color: #1856a1;
   #menu img{
     margin-top: 50px;
     
+  }
+
+  #menu-button {
+    background-color:white;
+    color: black;
+    top: 10px;
+    left: 10px; /* 画面左上に固定 */
+    display: block;
+    margin: -10px;
+    font-weight: bold;
   }
 }
 
@@ -261,6 +273,11 @@ background-color: #1856a1;
   #menu img{
     margin-top: 50px;
     
+  }
+
+  #menu-button.open {
+    background-color:white;
+    color: black;
   }
 
 
