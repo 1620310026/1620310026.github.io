@@ -6,8 +6,6 @@ body {
   margin: 0;
 }
 
-
-
 h3{
 font-size: 20px;
 margin-bottom: 5px;
@@ -199,15 +197,10 @@ margin-block-start: 0px;
 background-color: #1856a1;
 }
 
- #menu.closed {
-  left: 0;
-}
-
 #content{
   margin: 20px;
   padding-top: 20px; 
 }
-
 
 /* メディアクエリ: 横幅750px以下の場合 */
 @media (max-width: 630px) {
@@ -230,13 +223,11 @@ background-color: #1856a1;
       color: #fff;
   }
 
-
   #menu a span {
     width: 100%;
   }
   #menu img{
     margin-top: 50px;
-    
   }
 
   #menu-button {
@@ -289,13 +280,10 @@ background-color: #1856a1;
     color: black;
   }
 
-
   #menu-button {
     margin: -10px;
     font-weight: bold;
   }
-
- 
 
   #menu {
     width: 250px;
