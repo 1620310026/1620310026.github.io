@@ -231,8 +231,8 @@ background-color: #1856a1;
   }
 
   #menu-button {
-    background-color:white;
-    color: black;
+    background-color:3480db;
+    color: fff;
     top: 10px;
     left: 10px; /* 画面左上に固定 */
     display: block;
@@ -276,8 +276,8 @@ background-color: #1856a1;
   }
 
   #menu-button.open {
-    background-color:white;
-    color: black;
+    background-color: #3480db;
+    color: fff;
   }
 
   #menu-button {
