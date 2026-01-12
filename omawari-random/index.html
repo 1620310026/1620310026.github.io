@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <link rel="stylesheet" href="css.css">
     <meta charset="utf-8">
@@ -8,301 +9,315 @@
     <link rel="icon" href="favicon.ico">
     <meta name="description" content="ランダムで大回り乗車のルートを生成します。各種オプションで経路の長さなども指定できます。" />
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "j843t9923n");
     </script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/js/tom-select.complete.min.js"></script>
 </head>
+
 <body>
     <div id="menu-button" onclick="toggleMenu()"><span>☰menu</span></div>
     <div class id="menu">
         <ul>
             <li><img src="logo.png" height="50px" alt="大回り乗車ランダムルートジェネレーターのロゴ"></li>
             <li><a href="./"><span>東京近郊区間</span></a>
-            <li><a href="osaka.html"><span>大阪近郊区間</span></a>                
+            <li><a href="osaka.html"><span>大阪近郊区間</span></a>
             <li><a href="help.html"><span>使い方</span></a></li>
             <li><a href="sonota.html"><span>その他・問い合わせ</span></a></li>
         </ul>
-    </div>    
+    </div>
     <div id="content">
-    <h1>大回り乗車ランダムルートジェネレーター（東京近郊区間）</h1>
-    <h3>始点・終点指定を選択時に、不正なルートが生成されることがあります。実際に大回り乗車を実行する際には正しいルートか確認するようにしてください。</h3>
-    <div id="form">
-        <form>
-            <p id="koumoku">ルートの形状</p>
-            <label class="custom-radio">
-                <input type="radio" name="1" value="o" checked onclick="showElement();">
-                <span class="radio-text">O型(一周)</span>
-            </label>
-            <label class="custom-radio">
-                <input type="radio" name="1" value="n" onclick="showElement();">
-                <span class="radio-text">始点・終点指定</span>
-            </label>
-            <p id="koumoku">長さ・経由する乗り換え駅の数</p>
-            <label class="custom-radio">
-                <input type="radio" name="ekisuu" value="0,8" >
-                <span class="radio-text">お手軽8駅以下</span>
-            </label>
-            <label class="custom-radio">
-                <input type="radio" name="ekisuu" value="9,15" >
-                <span class="radio-text">軽めに9~15駅</span>
-            </label>
-            <label class="custom-radio">
-                <input type="radio" name="ekisuu" value="16,22" >
-                <span class="radio-text"> 乗り鉄16~22駅</span>
-            </label>
-            <label class="custom-radio">
-                <input type="radio" name="ekisuu" value="23,30" >
-                <span class="radio-text">いつもより長めに23~30駅</span>
-            </label>
-            <label class="custom-radio">
-                <input type="radio" name="ekisuu" value="31,40" >
-                <span class="radio-text">早朝から深夜まで31~40駅</span>
-            </label>
-            <label class="custom-radio">
-                <input type="radio" name="ekisuu" value="41,100" >
-                <span class="radio-text">日帰りほぼ不可41駅以上</span>
-            </label>
-            <label class="custom-radio">
-                <input type="radio" name="ekisuu" value="0,100" checked>
-                <span class="radio-text">駅数指定なし</span>
-            </label>
-            <p id="koumoku">経由不可にする駅</p>
-            <label class="custom-toggle">
-                <input type="checkbox" name="keiyufuka" value="高崎" >
-                <span class="toggle-text">高崎</span>
-            </label>
-            <label class="custom-toggle">
-                <input type="checkbox" name="keiyufuka" value="倉賀野" >
-                <span class="toggle-text">倉賀野</span>
-            </label>
-            <label class="custom-toggle">
-                <input type="checkbox" name="keiyufuka" value="友部" >
-                <span class="toggle-text">友部</span>
-            </label>
-            <label class="custom-toggle">
-                <input type="checkbox" name="keiyufuka" value="香取" >
-                <span class="toggle-text">香取</span>
-            </label>
-            <label class="custom-toggle">
-                <input type="checkbox" name="keiyufuka" value="安房鴨川" >
-                <span class="toggle-text">安房鴨川</span>
-            </label>
-            <label class="custom-toggle">
-                <input type="checkbox" name="keiyufuka" value="茅ヶ崎" >
-                <span class="toggle-text">茅ヶ崎</span>
-            </label>
-            <label class="custom-toggle">
-                <input type="checkbox" name="keiyufuka" value="浜川崎" >
-                <span class="toggle-text">浜川崎</span>
-            </label>
-        </form>
-    </div>    
-    <p id="sentaku">大回り乗車の始点・終点となる駅のある区間もしくは駅（乗換駅+αのみ）を選択</p>
-    <select id="dropdown">
-        <option value="友部 - 小山">友部 - 小山</option>
-        <option value="友部 - 我孫子">友部 - 我孫子</option>
-        <option value="我孫子 - 新松戸">我孫子 - 新松戸</option>
-        <option value="我孫子 - 成田">我孫子 - 成田</option>
-        <option value="小山 - 大宮">小山 - 大宮</option>
-        <option value="小山 - 高崎">小山 - 高崎</option>
-        <option value="新松戸 - 南浦和">新松戸 - 南浦和</option>
-        <option value="新松戸 - 日暮里">新松戸 - 日暮里</option>
-        <option value="新松戸 - 西船橋">新松戸 - 西船橋</option>
-        <option value="成田 - 香取">成田 - 香取</option>
-        <option value="成田 - 佐倉">成田 - 佐倉</option>
-        <option value="大宮 - 高麗川">大宮 - 高麗川</option>
-        <option value="大宮 - 倉賀野">大宮 - 倉賀野</option>
-        <option value="大宮 - 南浦和">大宮 - 南浦和</option>
-        <option value="大宮 - 武蔵浦和">大宮 - 武蔵浦和</option>
-        <option value="南浦和 - 武蔵浦和">南浦和 - 武蔵浦和</option>
-        <option value="南浦和 - 赤羽">南浦和 - 赤羽</option>
-        <option value="上野 - 秋葉原">上野 - 秋葉原</option>
-        <option value="上野 - 日暮里">上野 - 日暮里</option>
-        <option value="尾久 - 日暮里">尾久 - 日暮里</option>
-        <option value="尾久 - 赤羽">尾久 - 赤羽</option>
-        <option value="西船橋 - 千葉">西船橋 - 千葉</option>
-        <option value="西船橋 - 錦糸町">西船橋 - 錦糸町</option>
-        <option value="西船橋 - 南船橋">西船橋 - 南船橋</option>
-        <option value="西船橋 - 市川塩浜">西船橋 - 市川塩浜</option>
-        <option value="香取 - 松岸">香取 - 松岸</option>
-        <option value="佐倉 - 成東">佐倉 - 成東</option>
-        <option value="佐倉 - 千葉">佐倉 - 千葉</option>
-        <option value="高麗川 - 倉賀野">高麗川 - 倉賀野</option>
-        <option value="高麗川 - 拝島">高麗川 - 拝島</option>
-        <option value="倉賀野 - 高崎">倉賀野 - 高崎</option>
-        <option value="武蔵浦和 - 赤羽">武蔵浦和 - 赤羽</option>
-        <option value="武蔵浦和 - 西国分寺">武蔵浦和 - 西国分寺</option>
-        <option value="赤羽 - 田端">赤羽 - 田端</option>
-        <option value="赤羽 - 池袋">赤羽 - 池袋</option>
-        <option value="田端 - 池袋">田端 - 池袋</option>
-        <option value="田端 - 日暮里">田端 - 日暮里</option>
-        <option value="秋葉原 - 御茶ノ水">秋葉原 - 御茶ノ水</option>
-        <option value="秋葉原 - 神田">秋葉原 - 神田</option>
-        <option value="秋葉原 - 錦糸町">秋葉原 - 錦糸町</option>
-        <option value="千葉 - 蘇我">千葉 - 蘇我</option>
-        <option value="錦糸町 - 東京">錦糸町 - 東京</option>
-        <option value="南船橋 - 市川塩浜">南船橋 - 市川塩浜</option>
-        <option value="南船橋 - 蘇我">南船橋 - 蘇我</option>
-        <option value="市川塩浜 - 東京">市川塩浜 - 東京</option>
-        <option value="松岸 - 成東">松岸 - 成東</option>
-        <option value="成東 - 大網">成東 - 大網</option>
-        <option value="拝島 - 立川">拝島 - 立川</option>
-        <option value="拝島 - 八王子">拝島 - 八王子</option>
-        <option value="西国分寺 - 新宿">西国分寺 - 新宿</option>
-        <option value="西国分寺 - 府中本町">西国分寺 - 府中本町</option>
-        <option value="西国分寺 - 立川">西国分寺 - 立川</option>
-        <option value="池袋 - 新宿">池袋 - 新宿</option>
-        <option value="御茶ノ水 - 神田">御茶ノ水 - 神田</option>
-        <option value="御茶ノ水 - 代々木">御茶ノ水 - 代々木</option>
-        <option value="神田 - 東京">神田 - 東京</option>
-        <option value="蘇我 - 大網">蘇我 - 大網</option>
-        <option value="蘇我 - 木更津">蘇我 - 木更津</option>
-        <option value="東京 - 品川">東京 - 品川</option>
-        <option value="大網 - 安房鴨川">大網 - 安房鴨川</option>
-        <option value="立川 - 八王子">立川 - 八王子</option>
-        <option value="立川 - 府中本町">立川 - 府中本町</option>
-        <option value="八王子 - 橋本">八王子 - 橋本</option>
-        <option value="府中本町 - 武蔵小杉">府中本町 - 武蔵小杉</option>
-        <option value="新宿 - 代々木">新宿 - 代々木</option>
-        <option value="代々木 - 品川">代々木 - 品川</option>
-        <option value="安房鴨川 - 木更津">安房鴨川 - 木更津</option>
-        <option value="橋本 - 茅ヶ崎">橋本 - 茅ヶ崎</option>
-        <option value="橋本 - 東神奈川">橋本 - 東神奈川</option>
-        <option value="武蔵小杉 - 品川">武蔵小杉 - 品川</option>
-        <option value="武蔵小杉 - 尻手">武蔵小杉 - 尻手</option>
-        <option value="武蔵小杉 - 鶴見">武蔵小杉 - 鶴見</option>
-        <option value="品川 - 川崎">品川 - 川崎</option>
-        <option value="茅ヶ崎 - 大船">茅ヶ崎 - 大船</option>
-        <option value="東神奈川 - 横浜">東神奈川 - 横浜</option>
-        <option value="東神奈川 - 鶴見">東神奈川 - 鶴見</option>
-        <option value="尻手 - 浜川崎">尻手 - 浜川崎</option>
-        <option value="尻手 - 川崎">尻手 - 川崎</option>
-        <option value="鶴見 - 浜川崎">鶴見 - 浜川崎</option>
-        <option value="鶴見 - 川崎">鶴見 - 川崎</option>
-        <option value="大船 - 横浜">大船 - 横浜</option>
-        <option value="大船 - 磯子">大船 - 磯子</option>
-        <option value="横浜 - 磯子">横浜 - 磯子</option>                 
-    </select>
-    <div id="elementToShow" style="display: none;">
-    <p>大回り乗車の終点となる駅のある区間もしくは駅（乗換駅+αのみ）を選択</p>
-    <select id="dropdown2">
-        <option value="友部 - 小山">友部 - 小山</option>
-        <option value="友部 - 我孫子">友部 - 我孫子</option>
-        <option value="我孫子 - 新松戸">我孫子 - 新松戸</option>
-        <option value="我孫子 - 成田">我孫子 - 成田</option>
-        <option value="小山 - 大宮">小山 - 大宮</option>
-        <option value="小山 - 高崎">小山 - 高崎</option>
-        <option value="新松戸 - 南浦和">新松戸 - 南浦和</option>
-        <option value="新松戸 - 日暮里">新松戸 - 日暮里</option>
-        <option value="新松戸 - 西船橋">新松戸 - 西船橋</option>
-        <option value="成田 - 香取">成田 - 香取</option>
-        <option value="成田 - 佐倉">成田 - 佐倉</option>
-        <option value="大宮 - 高麗川">大宮 - 高麗川</option>
-        <option value="大宮 - 倉賀野">大宮 - 倉賀野</option>
-        <option value="大宮 - 南浦和">大宮 - 南浦和</option>
-        <option value="大宮 - 武蔵浦和">大宮 - 武蔵浦和</option>
-        <option value="南浦和 - 武蔵浦和">南浦和 - 武蔵浦和</option>
-        <option value="南浦和 - 赤羽">南浦和 - 赤羽</option>
-        <option value="上野 - 秋葉原">上野 - 秋葉原</option>
-        <option value="上野 - 日暮里">上野 - 日暮里</option>
-        <option value="尾久 - 日暮里">尾久 - 日暮里</option>
-        <option value="尾久 - 赤羽">尾久 - 赤羽</option>
-        <option value="西船橋 - 千葉">西船橋 - 千葉</option>
-        <option value="西船橋 - 錦糸町">西船橋 - 錦糸町</option>
-        <option value="西船橋 - 南船橋">西船橋 - 南船橋</option>
-        <option value="西船橋 - 市川塩浜">西船橋 - 市川塩浜</option>
-        <option value="香取 - 松岸">香取 - 松岸</option>
-        <option value="佐倉 - 成東">佐倉 - 成東</option>
-        <option value="佐倉 - 千葉">佐倉 - 千葉</option>
-        <option value="高麗川 - 倉賀野">高麗川 - 倉賀野</option>
-        <option value="高麗川 - 拝島">高麗川 - 拝島</option>
-        <option value="倉賀野 - 高崎">倉賀野 - 高崎</option>
-        <option value="武蔵浦和 - 赤羽">武蔵浦和 - 赤羽</option>
-        <option value="武蔵浦和 - 西国分寺">武蔵浦和 - 西国分寺</option>
-        <option value="赤羽 - 田端">赤羽 - 田端</option>
-        <option value="赤羽 - 池袋">赤羽 - 池袋</option>
-        <option value="田端 - 池袋">田端 - 池袋</option>
-        <option value="田端 - 日暮里">田端 - 日暮里</option>
-        <option value="秋葉原 - 御茶ノ水">秋葉原 - 御茶ノ水</option>
-        <option value="秋葉原 - 神田">秋葉原 - 神田</option>
-        <option value="秋葉原 - 錦糸町">秋葉原 - 錦糸町</option>
-        <option value="千葉 - 蘇我">千葉 - 蘇我</option>
-        <option value="錦糸町 - 東京">錦糸町 - 東京</option>
-        <option value="南船橋 - 市川塩浜">南船橋 - 市川塩浜</option>
-        <option value="南船橋 - 蘇我">南船橋 - 蘇我</option>
-        <option value="市川塩浜 - 東京">市川塩浜 - 東京</option>
-        <option value="松岸 - 成東">松岸 - 成東</option>
-        <option value="成東 - 大網">成東 - 大網</option>
-        <option value="拝島 - 立川">拝島 - 立川</option>
-        <option value="拝島 - 八王子">拝島 - 八王子</option>
-        <option value="西国分寺 - 新宿">西国分寺 - 新宿</option>
-        <option value="西国分寺 - 府中本町">西国分寺 - 府中本町</option>
-        <option value="西国分寺 - 立川">西国分寺 - 立川</option>
-        <option value="池袋 - 新宿">池袋 - 新宿</option>
-        <option value="御茶ノ水 - 神田">御茶ノ水 - 神田</option>
-        <option value="御茶ノ水 - 代々木">御茶ノ水 - 代々木</option>
-        <option value="神田 - 東京">神田 - 東京</option>
-        <option value="蘇我 - 大網">蘇我 - 大網</option>
-        <option value="蘇我 - 木更津">蘇我 - 木更津</option>
-        <option value="東京 - 品川">東京 - 品川</option>
-        <option value="大網 - 安房鴨川">大網 - 安房鴨川</option>
-        <option value="立川 - 八王子">立川 - 八王子</option>
-        <option value="立川 - 府中本町">立川 - 府中本町</option>
-        <option value="八王子 - 橋本">八王子 - 橋本</option>
-        <option value="府中本町 - 武蔵小杉">府中本町 - 武蔵小杉</option>
-        <option value="新宿 - 代々木">新宿 - 代々木</option>
-        <option value="代々木 - 品川">代々木 - 品川</option>
-        <option value="安房鴨川 - 木更津">安房鴨川 - 木更津</option>
-        <option value="橋本 - 茅ヶ崎">橋本 - 茅ヶ崎</option>
-        <option value="橋本 - 東神奈川">橋本 - 東神奈川</option>
-        <option value="武蔵小杉 - 品川">武蔵小杉 - 品川</option>
-        <option value="武蔵小杉 - 尻手">武蔵小杉 - 尻手</option>
-        <option value="武蔵小杉 - 鶴見">武蔵小杉 - 鶴見</option>
-        <option value="品川 - 川崎">品川 - 川崎</option>
-        <option value="茅ヶ崎 - 大船">茅ヶ崎 - 大船</option>
-        <option value="東神奈川 - 横浜">東神奈川 - 横浜</option>
-        <option value="東神奈川 - 鶴見">東神奈川 - 鶴見</option>
-        <option value="尻手 - 浜川崎">尻手 - 浜川崎</option>
-        <option value="尻手 - 川崎">尻手 - 川崎</option>
-        <option value="鶴見 - 浜川崎">鶴見 - 浜川崎</option>
-        <option value="鶴見 - 川崎">鶴見 - 川崎</option>
-        <option value="大船 - 横浜">大船 - 横浜</option>
-        <option value="大船 - 磯子">大船 - 磯子</option>
-        <option value="横浜 - 磯子">横浜 - 磯子</option>
-    </select>
+        <h1>サイトを移転しました</h1>
+        <h1 style="text-decoration:underline; text-decoration-color:blue"><a href="https://orrg.pages.dev/">クリックして移転先へ移動</a></h1>
+        <!-- <h3>始点・終点指定を選択時に、不正なルートが生成されることがあります。実際に大回り乗車を実行する際には正しいルートか確認するようにしてください。</h3>
+        <div id="form">
+            <form>
+                <p id="koumoku">ルートの形状</p>
+                <label class="custom-radio">
+                    <input type="radio" name="1" value="o" checked onclick="showElement();">
+                    <span class="radio-text">O型(一周)</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="1" value="n" onclick="showElement();">
+                    <span class="radio-text">始点・終点指定</span>
+                </label>
+                <p id="koumoku">長さ・経由する乗り換え駅の数</p>
+                <label class="custom-radio">
+                    <input type="radio" name="ekisuu" value="0,8">
+                    <span class="radio-text">お手軽8駅以下</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="ekisuu" value="9,15">
+                    <span class="radio-text">軽めに9~15駅</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="ekisuu" value="16,22">
+                    <span class="radio-text"> 乗り鉄16~22駅</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="ekisuu" value="23,30">
+                    <span class="radio-text">いつもより長めに23~30駅</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="ekisuu" value="31,40">
+                    <span class="radio-text">早朝から深夜まで31~40駅</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="ekisuu" value="41,100">
+                    <span class="radio-text">日帰りほぼ不可41駅以上</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="ekisuu" value="0,100" checked>
+                    <span class="radio-text">駅数指定なし</span>
+                </label>
+                <p id="koumoku">経由不可にする駅</p>
+                <label class="custom-toggle">
+                    <input type="checkbox" name="keiyufuka" value="高崎">
+                    <span class="toggle-text">高崎</span>
+                </label>
+                <label class="custom-toggle">
+                    <input type="checkbox" name="keiyufuka" value="倉賀野">
+                    <span class="toggle-text">倉賀野</span>
+                </label>
+                <label class="custom-toggle">
+                    <input type="checkbox" name="keiyufuka" value="友部">
+                    <span class="toggle-text">友部</span>
+                </label>
+                <label class="custom-toggle">
+                    <input type="checkbox" name="keiyufuka" value="香取">
+                    <span class="toggle-text">香取</span>
+                </label>
+                <label class="custom-toggle">
+                    <input type="checkbox" name="keiyufuka" value="安房鴨川">
+                    <span class="toggle-text">安房鴨川</span>
+                </label>
+                <label class="custom-toggle">
+                    <input type="checkbox" name="keiyufuka" value="茅ヶ崎">
+                    <span class="toggle-text">茅ヶ崎</span>
+                </label>
+                <label class="custom-toggle">
+                    <input type="checkbox" name="keiyufuka" value="浜川崎">
+                    <span class="toggle-text">浜川崎</span>
+                </label>
+            </form>
+        </div>
+        <p id="sentaku">大回り乗車の始点・終点となる駅のある区間もしくは駅（乗換駅+αのみ）を選択</p>
+        
+        <select id="dropdown" placeholder="始点最寄りの乗換駅を入力し候補を選択">
+            <option value="友部 - 小山">友部 - 小山</option>
+            <option value="友部 - 我孫子">友部 - 我孫子</option>
+            <option value="我孫子 - 新松戸">我孫子 - 新松戸</option>
+            <option value="我孫子 - 成田">我孫子 - 成田</option>
+            <option value="小山 - 大宮">小山 - 大宮</option>
+            <option value="小山 - 高崎">小山 - 高崎</option>
+            <option value="新松戸 - 南浦和">新松戸 - 南浦和</option>
+            <option value="新松戸 - 日暮里">新松戸 - 日暮里</option>
+            <option value="新松戸 - 西船橋">新松戸 - 西船橋</option>
+            <option value="成田 - 香取">成田 - 香取</option>
+            <option value="成田 - 佐倉">成田 - 佐倉</option>
+            <option value="大宮 - 高麗川">大宮 - 高麗川</option>
+            <option value="大宮 - 倉賀野">大宮 - 倉賀野</option>
+            <option value="大宮 - 南浦和">大宮 - 南浦和</option>
+            <option value="大宮 - 武蔵浦和">大宮 - 武蔵浦和</option>
+            <option value="南浦和 - 武蔵浦和">南浦和 - 武蔵浦和</option>
+            <option value="南浦和 - 赤羽">南浦和 - 赤羽</option>
+            <option value="上野 - 秋葉原">上野 - 秋葉原</option>
+            <option value="上野 - 日暮里">上野 - 日暮里</option>
+            <option value="尾久 - 日暮里">尾久 - 日暮里</option>
+            <option value="尾久 - 赤羽">尾久 - 赤羽</option>
+            <option value="西船橋 - 千葉">西船橋 - 千葉</option>
+            <option value="西船橋 - 錦糸町">西船橋 - 錦糸町</option>
+            <option value="西船橋 - 南船橋">西船橋 - 南船橋</option>
+            <option value="西船橋 - 市川塩浜">西船橋 - 市川塩浜</option>
+            <option value="香取 - 松岸">香取 - 松岸</option>
+            <option value="佐倉 - 成東">佐倉 - 成東</option>
+            <option value="佐倉 - 千葉">佐倉 - 千葉</option>
+            <option value="高麗川 - 倉賀野">高麗川 - 倉賀野</option>
+            <option value="高麗川 - 拝島">高麗川 - 拝島</option>
+            <option value="倉賀野 - 高崎">倉賀野 - 高崎</option>
+            <option value="武蔵浦和 - 赤羽">武蔵浦和 - 赤羽</option>
+            <option value="武蔵浦和 - 西国分寺">武蔵浦和 - 西国分寺</option>
+            <option value="赤羽 - 田端">赤羽 - 田端</option>
+            <option value="赤羽 - 池袋">赤羽 - 池袋</option>
+            <option value="田端 - 池袋">田端 - 池袋</option>
+            <option value="田端 - 日暮里">田端 - 日暮里</option>
+            <option value="秋葉原 - 御茶ノ水">秋葉原 - 御茶ノ水</option>
+            <option value="秋葉原 - 神田">秋葉原 - 神田</option>
+            <option value="秋葉原 - 錦糸町">秋葉原 - 錦糸町</option>
+            <option value="千葉 - 蘇我">千葉 - 蘇我</option>
+            <option value="錦糸町 - 東京">錦糸町 - 東京</option>
+            <option value="南船橋 - 市川塩浜">南船橋 - 市川塩浜</option>
+            <option value="南船橋 - 蘇我">南船橋 - 蘇我</option>
+            <option value="市川塩浜 - 東京">市川塩浜 - 東京</option>
+            <option value="松岸 - 成東">松岸 - 成東</option>
+            <option value="成東 - 大網">成東 - 大網</option>
+            <option value="拝島 - 立川">拝島 - 立川</option>
+            <option value="拝島 - 八王子">拝島 - 八王子</option>
+            <option value="西国分寺 - 新宿">西国分寺 - 新宿</option>
+            <option value="西国分寺 - 府中本町">西国分寺 - 府中本町</option>
+            <option value="西国分寺 - 立川">西国分寺 - 立川</option>
+            <option value="池袋 - 新宿">池袋 - 新宿</option>
+            <option value="御茶ノ水 - 神田">御茶ノ水 - 神田</option>
+            <option value="御茶ノ水 - 代々木">御茶ノ水 - 代々木</option>
+            <option value="神田 - 東京">神田 - 東京</option>
+            <option value="蘇我 - 大網">蘇我 - 大網</option>
+            <option value="蘇我 - 木更津">蘇我 - 木更津</option>
+            <option value="東京 - 品川">東京 - 品川</option>
+            <option value="大網 - 安房鴨川">大網 - 安房鴨川</option>
+            <option value="立川 - 八王子">立川 - 八王子</option>
+            <option value="立川 - 府中本町">立川 - 府中本町</option>
+            <option value="八王子 - 橋本">八王子 - 橋本</option>
+            <option value="府中本町 - 武蔵小杉">府中本町 - 武蔵小杉</option>
+            <option value="新宿 - 代々木">新宿 - 代々木</option>
+            <option value="代々木 - 品川">代々木 - 品川</option>
+            <option value="安房鴨川 - 木更津">安房鴨川 - 木更津</option>
+            <option value="橋本 - 茅ヶ崎">橋本 - 茅ヶ崎</option>
+            <option value="橋本 - 東神奈川">橋本 - 東神奈川</option>
+            <option value="武蔵小杉 - 品川">武蔵小杉 - 品川</option>
+            <option value="武蔵小杉 - 尻手">武蔵小杉 - 尻手</option>
+            <option value="武蔵小杉 - 鶴見">武蔵小杉 - 鶴見</option>
+            <option value="品川 - 川崎">品川 - 川崎</option>
+            <option value="茅ヶ崎 - 大船">茅ヶ崎 - 大船</option>
+            <option value="東神奈川 - 横浜">東神奈川 - 横浜</option>
+            <option value="東神奈川 - 鶴見">東神奈川 - 鶴見</option>
+            <option value="尻手 - 浜川崎">尻手 - 浜川崎</option>
+            <option value="尻手 - 川崎">尻手 - 川崎</option>
+            <option value="鶴見 - 浜川崎">鶴見 - 浜川崎</option>
+            <option value="鶴見 - 川崎">鶴見 - 川崎</option>
+            <option value="大船 - 横浜">大船 - 横浜</option>
+            <option value="大船 - 磯子">大船 - 磯子</option>
+            <option value="横浜 - 磯子">横浜 - 磯子</option>
+        </select>
+        <div id="elementToShow" style="display: none;">
+            <p>大回り乗車の終点となる駅のある区間もしくは駅（乗換駅+αのみ）を選択</p>
+            <select id="dropdown2" placeholder="終点最寄りの乗換駅を入力し候補を選択">
+                <option value="友部 - 小山">友部 - 小山</option>
+                <option value="友部 - 我孫子">友部 - 我孫子</option>
+                <option value="我孫子 - 新松戸">我孫子 - 新松戸</option>
+                <option value="我孫子 - 成田">我孫子 - 成田</option>
+                <option value="小山 - 大宮">小山 - 大宮</option>
+                <option value="小山 - 高崎">小山 - 高崎</option>
+                <option value="新松戸 - 南浦和">新松戸 - 南浦和</option>
+                <option value="新松戸 - 日暮里">新松戸 - 日暮里</option>
+                <option value="新松戸 - 西船橋">新松戸 - 西船橋</option>
+                <option value="成田 - 香取">成田 - 香取</option>
+                <option value="成田 - 佐倉">成田 - 佐倉</option>
+                <option value="大宮 - 高麗川">大宮 - 高麗川</option>
+                <option value="大宮 - 倉賀野">大宮 - 倉賀野</option>
+                <option value="大宮 - 南浦和">大宮 - 南浦和</option>
+                <option value="大宮 - 武蔵浦和">大宮 - 武蔵浦和</option>
+                <option value="南浦和 - 武蔵浦和">南浦和 - 武蔵浦和</option>
+                <option value="南浦和 - 赤羽">南浦和 - 赤羽</option>
+                <option value="上野 - 秋葉原">上野 - 秋葉原</option>
+                <option value="上野 - 日暮里">上野 - 日暮里</option>
+                <option value="尾久 - 日暮里">尾久 - 日暮里</option>
+                <option value="尾久 - 赤羽">尾久 - 赤羽</option>
+                <option value="西船橋 - 千葉">西船橋 - 千葉</option>
+                <option value="西船橋 - 錦糸町">西船橋 - 錦糸町</option>
+                <option value="西船橋 - 南船橋">西船橋 - 南船橋</option>
+                <option value="西船橋 - 市川塩浜">西船橋 - 市川塩浜</option>
+                <option value="香取 - 松岸">香取 - 松岸</option>
+                <option value="佐倉 - 成東">佐倉 - 成東</option>
+                <option value="佐倉 - 千葉">佐倉 - 千葉</option>
+                <option value="高麗川 - 倉賀野">高麗川 - 倉賀野</option>
+                <option value="高麗川 - 拝島">高麗川 - 拝島</option>
+                <option value="倉賀野 - 高崎">倉賀野 - 高崎</option>
+                <option value="武蔵浦和 - 赤羽">武蔵浦和 - 赤羽</option>
+                <option value="武蔵浦和 - 西国分寺">武蔵浦和 - 西国分寺</option>
+                <option value="赤羽 - 田端">赤羽 - 田端</option>
+                <option value="赤羽 - 池袋">赤羽 - 池袋</option>
+                <option value="田端 - 池袋">田端 - 池袋</option>
+                <option value="田端 - 日暮里">田端 - 日暮里</option>
+                <option value="秋葉原 - 御茶ノ水">秋葉原 - 御茶ノ水</option>
+                <option value="秋葉原 - 神田">秋葉原 - 神田</option>
+                <option value="秋葉原 - 錦糸町">秋葉原 - 錦糸町</option>
+                <option value="千葉 - 蘇我">千葉 - 蘇我</option>
+                <option value="錦糸町 - 東京">錦糸町 - 東京</option>
+                <option value="南船橋 - 市川塩浜">南船橋 - 市川塩浜</option>
+                <option value="南船橋 - 蘇我">南船橋 - 蘇我</option>
+                <option value="市川塩浜 - 東京">市川塩浜 - 東京</option>
+                <option value="松岸 - 成東">松岸 - 成東</option>
+                <option value="成東 - 大網">成東 - 大網</option>
+                <option value="拝島 - 立川">拝島 - 立川</option>
+                <option value="拝島 - 八王子">拝島 - 八王子</option>
+                <option value="西国分寺 - 新宿">西国分寺 - 新宿</option>
+                <option value="西国分寺 - 府中本町">西国分寺 - 府中本町</option>
+                <option value="西国分寺 - 立川">西国分寺 - 立川</option>
+                <option value="池袋 - 新宿">池袋 - 新宿</option>
+                <option value="御茶ノ水 - 神田">御茶ノ水 - 神田</option>
+                <option value="御茶ノ水 - 代々木">御茶ノ水 - 代々木</option>
+                <option value="神田 - 東京">神田 - 東京</option>
+                <option value="蘇我 - 大網">蘇我 - 大網</option>
+                <option value="蘇我 - 木更津">蘇我 - 木更津</option>
+                <option value="東京 - 品川">東京 - 品川</option>
+                <option value="大網 - 安房鴨川">大網 - 安房鴨川</option>
+                <option value="立川 - 八王子">立川 - 八王子</option>
+                <option value="立川 - 府中本町">立川 - 府中本町</option>
+                <option value="八王子 - 橋本">八王子 - 橋本</option>
+                <option value="府中本町 - 武蔵小杉">府中本町 - 武蔵小杉</option>
+                <option value="新宿 - 代々木">新宿 - 代々木</option>
+                <option value="代々木 - 品川">代々木 - 品川</option>
+                <option value="安房鴨川 - 木更津">安房鴨川 - 木更津</option>
+                <option value="橋本 - 茅ヶ崎">橋本 - 茅ヶ崎</option>
+                <option value="橋本 - 東神奈川">橋本 - 東神奈川</option>
+                <option value="武蔵小杉 - 品川">武蔵小杉 - 品川</option>
+                <option value="武蔵小杉 - 尻手">武蔵小杉 - 尻手</option>
+                <option value="武蔵小杉 - 鶴見">武蔵小杉 - 鶴見</option>
+                <option value="品川 - 川崎">品川 - 川崎</option>
+                <option value="茅ヶ崎 - 大船">茅ヶ崎 - 大船</option>
+                <option value="東神奈川 - 横浜">東神奈川 - 横浜</option>
+                <option value="東神奈川 - 鶴見">東神奈川 - 鶴見</option>
+                <option value="尻手 - 浜川崎">尻手 - 浜川崎</option>
+                <option value="尻手 - 川崎">尻手 - 川崎</option>
+                <option value="鶴見 - 浜川崎">鶴見 - 浜川崎</option>
+                <option value="鶴見 - 川崎">鶴見 - 川崎</option>
+                <option value="大船 - 横浜">大船 - 横浜</option>
+                <option value="大船 - 磯子">大船 - 磯子</option>
+                <option value="横浜 - 磯子">横浜 - 磯子</option>
+            </select>
+        </div>
+        <button class="generate-button" onclick="generateRoute()">ランダムルート生成</button>
+        <p id="output"><br><br><br><br><br></p>
+        <br>
+        <button onclick="download()" class="generate-button">生成されたルートを画像に変換してダウンロード</button>
+        <p><a href="https://www.jreast.co.jp/kippu/1103.html">大都市近郊区間の特例</a>を利用した大回り乗車のルートをランダムで生成します。</p>
+        <p>大回り乗車について知っている方のみ使用してください。わからない方はネット上で調べてください。</p>
+        <p>また、生成されたルートに関する注意事項がございますので、<a href="#caution">こちら</a>もご覧ください。</p>
+        <p>現在、<a href="https://www.jreast.co.jp/kippu/1103.html">東京近郊区間,大阪近郊区間</a>のみに対応しております。</p>
+        <p>大阪近郊区間版は<a href="./">こちら</a>です。</p>
+        <p>詳しい使い方は、<a href="help.html">使い方</a>のページをご覧ください。</p>
+        <br>
+
+        <h2 id="caution">ルート生成に関する注意事項</h2>
+        <h3 id="notmargintop">山手・京浜東北・常磐線と宇都宮線・高崎線尾久方面の乗り換え</h3>
+        <div class="image">
+            <p>宇都宮線乗り換えに関係する路線図</p>
+            <img src="nippori.png" alt="上野〜日暮里〜赤羽の路線図">
+        </div>
+        <p>常磐線三河島方面・山手・京浜東北線西日暮里方面と宇都宮線尾久方面の乗り換えは、一度上野に行かないとできません。しかし、宇都宮線は規則上は日暮里を通っているので、上野〜日暮里間が重複乗車になり大回りが成立しなくなります。
+        </p>
+        <p>ただし、詳細は省きますが<a href="https://www.jreast.co.jp/ryokaku/02_hen/03_syo/01_setsu/03.html">旅客営業規則第69条</a>、<a
+                href="https://www.jreast.co.jp/ryokaku/02_hen/03_syo/01_setsu/04.html">第70条</a>や<a
+                href="https://www.jreast.co.jp/kippu/1106.html">特定の分岐区間に対する区間外乗車の特例</a>によって、この区間は重複乗車にはならないとする解釈が多数です。JR東日本公式アプリの乗換案内でこの区間を含む経路を検索しても大回り乗車が可能だったので、このルートが生成されたときは上野まで行って乗り換えても問題はなさそうです。
+        </p>
+        <p>しかし規則にこの区間のことが明記されてはなく、駅員によって対応が変わる可能性などもあるため、不安な人は京浜東北線田端経由で移動する（元々のルートで田端を通らない場合）かルートを再生成するといったことで対応してください。
+        </p>
+        <h3>本サイトでの折り返し乗車の特例の扱い</h3>
+        <p>本サイトで生成されたルートは、<a href="https://www.jreast.co.jp/kippu/1105.html">折り返し乗車の特例</a>などを使用しないルートになっております。</p>
+        <br> -->
+        <div class="mini">
+            <p>本サイトのソースコードは<a href="https://github.com/1620310026/1620310026.github.io">GitHub</a>で公開されています。</p>
+            <p>本サイトのソースコードはMITライセンスに基づいてライセンスされています。ライセンスと著作権表示を行えば、商用利用・再頒布などが可能です。詳しくは<a
+                    href="https://github.com/1620310026/1620310026.github.io/blob/main/LICENSE">こちら</a>をご覧ください。</p>
+            <p>©2023 1620310026</p>
+        </div>
     </div>
-    <button class="generate-button" onclick="generateRoute()">ランダムルート生成</button>
-    <p id="output"><br><br><br><br><br></p>
-    <br>
-    <button onclick="download()" class="generate-button">生成されたルートを画像に変換してダウンロード</button>
-    <p><a href="https://www.jreast.co.jp/kippu/1103.html">大都市近郊区間の特例</a>を利用した大回り乗車のルートをランダムで生成します。</p>
-    <p>大回り乗車について知っている方のみ使用してください。わからない方はネット上で調べてください。</p>
-    <p>また、生成されたルートに関する注意事項がございますので、<a href="#caution">こちら</a>もご覧ください。</p>
-    <p>現在、<a href="https://www.jreast.co.jp/kippu/1103.html">東京近郊区間,大阪近郊区間</a>のみに対応しております。</p>
-    <p>大阪近郊区間版は<a href="./">こちら</a>です。</p>
-    <p>詳しい使い方は、<a href="help.html">使い方</a>のページをご覧ください。</p>
-    <br>
-    <script src="js2.js"></script>
-    <h2 id="caution">ルート生成に関する注意事項</h2>
-    <h3 id="notmargintop">山手・京浜東北・常磐線と宇都宮線・高崎線尾久方面の乗り換え</h3>
-    <div class="image">
-        <p>宇都宮線乗り換えに関係する路線図</p>
-        <img src="nippori.png" alt="上野〜日暮里〜赤羽の路線図">
-    </div>
-    <p>常磐線三河島方面・山手・京浜東北線西日暮里方面と宇都宮線尾久方面の乗り換えは、一度上野に行かないとできません。しかし、宇都宮線は規則上は日暮里を通っているので、上野〜日暮里間が重複乗車になり大回りが成立しなくなります。</p>
-    <p>ただし、詳細は省きますが<a href="https://www.jreast.co.jp/ryokaku/02_hen/03_syo/01_setsu/03.html">旅客営業規則第69条</a>、<a href="https://www.jreast.co.jp/ryokaku/02_hen/03_syo/01_setsu/04.html">第70条</a>や<a href="https://www.jreast.co.jp/kippu/1106.html">特定の分岐区間に対する区間外乗車の特例</a>によって、この区間は重複乗車にはならないとする解釈が多数です。JR東日本公式アプリの乗換案内でこの区間を含む経路を検索しても大回り乗車が可能だったので、このルートが生成されたときは上野まで行って乗り換えても問題はなさそうです。</p>
-    <p>しかし規則にこの区間のことが明記されてはなく、駅員によって対応が変わる可能性などもあるため、不安な人は京浜東北線田端経由で移動する（元々のルートで田端を通らない場合）かルートを再生成するといったことで対応してください。</p>                       
-    <h3>本サイトでの折り返し乗車の特例の扱い</h3>
-    <p>本サイトで生成されたルートは、<a href="https://www.jreast.co.jp/kippu/1105.html">折り返し乗車の特例</a>などを使用しないルートになっております。</p>
-    <br>
-    <div class="mini">
-    <p>本サイトのソースコードは<a href="https://github.com/1620310026/1620310026.github.io">GitHub</a>で公開されています。</p>
-    <p>本サイトのソースコードはMITライセンスに基づいてライセンスされています。ライセンスと著作権表示を行えば、商用利用・再頒布などが可能です。詳しくは<a href="https://github.com/1620310026/1620310026.github.io/blob/main/LICENSE">こちら</a>をご覧ください。</p>
-    <p>©2023 1620310026</p>
-    </div>
-    </div>
+    <script src="js2b.js"></script>
+
 </body>
+
 </html>
